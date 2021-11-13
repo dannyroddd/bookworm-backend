@@ -60,6 +60,16 @@ app.get("/bookmarks", async(req, res) => {
     }
 })
 
+//create route 
+app.post("/bookmarks", async (req, res)=>{
+    try {
+        res.json(await Book.create(req.body))
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
+
 
 //server listener
 app.listen(PORT, () => {console.log(`Listening on ${PORT}`)})
