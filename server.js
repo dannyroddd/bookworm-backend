@@ -51,6 +51,14 @@ app.get("/", (req, res) =>{
     res.send("Hello world")
 })
 
+// Index route
+app.get("/bookmarks", async(req, res) => {
+    try{
+        res.json(await Book.find({}))
+    } catch(error) {
+        res.status(400).json(error)
+    }
+})
 
 
 //server listener
