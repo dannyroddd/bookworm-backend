@@ -69,6 +69,26 @@ app.post("/bookmarks", async (req, res)=>{
     }
 })
 
+//update route
+app.put("/bookmarks/:id", async (req, res)=>{
+    try {
+        res.json(await Book.findByIdAndUpdate(req.params.id, req.body, { new: true }))
+    } catch (error) {
+        res.status(400).json(error)
+    }
+}) 
+
+
+//delete
+app.delete("/bookmarks/:id", async (req, res)=>{
+    try {
+        res.json(await Book.findByIdAndRemove(req.params.id))
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
+
 
 
 //server listener
