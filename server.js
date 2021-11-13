@@ -31,6 +31,15 @@ mongoose.connection
 .on("close", () => console.log("Disconnected to Mongo"))
 .on("error", (error) => console.log(error))
 
+//models
+const BookSchema = new mongoose.Schema(
+    {
+       title: String,
+       url: String
+    }
+)
+
+const Book = mongoose.model("Book", BookSchema)
 
 //register middleware
 app.use(cors())
@@ -41,6 +50,7 @@ app.use(express.json())
 app.get("/", (req, res) =>{
     res.send("Hello world")
 })
+
 
 
 //server listener
